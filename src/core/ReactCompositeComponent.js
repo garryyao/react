@@ -1411,6 +1411,8 @@ var ReactCompositeComponent = {
     );
   },
 
+  mixInto: mixSpecIntoComponent,
+
   injection: {
     injectMixin: function(mixin) {
       injectedMixins.push(mixin);
