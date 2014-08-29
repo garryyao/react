@@ -95,6 +95,7 @@ var React = {
   withContext: ReactContext.withContext,
   __internals: {
     Component: ReactComponent,
+    ReactCompositeComponent: ReactCompositeComponent,
     CurrentOwner: ReactCurrentOwner,
     DOMComponent: ReactDOMComponent,
     DOMPropertyOperations: DOMPropertyOperations,
