@@ -1351,17 +1351,21 @@ var ReactCompositeComponent = {
    * Creates a composite component class given a class specification.
    *
    * @param {object} spec Class specification (which must define `render`).
+   * @param {function} Constructor an optional custom component constructor.
    * @return {function} Component constructor function.
    * @public
    */
-  createClass: function(spec) {
-    var Constructor = function(props) {
-      // This constructor is overridden by mocks. The argument is used
-      // by mocks to assert on what gets mounted. This will later be used
-      // by the stand-alone class implementation.
-    };
-    Constructor.prototype = new ReactCompositeComponentBase();
-    Constructor.prototype.constructor = Constructor;
+  createClass: function(spec, Constructor) {
+
+    if(!Constructor){
+      Constructor = function(props) {
+        // This constructor is overridden by mocks. The argument is used
+        // by mocks to assert on what gets mounted. This will later be used
+        // by the stand-alone class implementation.
+      };
+      Constructor.prototype = new ReactCompositeComponentBase();
+      Constructor.prototype.constructor = Constructor;
+    }
 
     injectedMixins.forEach(
       mixSpecIntoComponent.bind(null, Constructor)
